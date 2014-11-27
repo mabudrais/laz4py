@@ -1,4 +1,4 @@
-this project is aiming to make extends lazarus ide support python.
+this project is aiming to extend lazarus ide support for python .
 Current state:
 Support debugging python code.
 How to install:
