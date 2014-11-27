@@ -1,0 +1,41 @@
+object Form1: TForm1
+  Left = 392
+  Height = 496
+  Top = 79
+  Width = 494
+  Caption = 'Form1'
+  ClientHeight = 496
+  ClientWidth = 494
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object Memo1: TMemo
+    Left = 8
+    Height = 320
+    Top = 80
+    Width = 440
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object Edit1: TEdit
+    Left = 16
+    Height = 23
+    Top = 409
+    Width = 432
+    OnEditingDone = Edit1EditingDone
+    TabOrder = 1
+  end
+  object SimpleIPCClient1: TSimpleIPCClient
+    Active = False
+    ServerID = '19826378'
+    left = 208
+    top = 184
+  end
+  object SimpleIPCServer1: TSimpleIPCServer
+    Active = False
+    ServerID = '1545487'
+    Global = True
+    OnMessage = SimpleIPCServer1Message
+    left = 304
+    top = 160
+  end
+end
