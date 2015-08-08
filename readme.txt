@@ -8,6 +8,7 @@ How to install:
 4- open the demo project 
 5- go to menue->tools->option->debugger select "python debuger" in debugger type and path
 6- add your breakpoint in the main.py 
-7- press run and have fun!!
+7- press run.
+8- put the the mouse over any  variable it's value should apears.
 
 
