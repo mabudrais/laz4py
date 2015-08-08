@@ -1,0 +1,8 @@
+TNotifyEvent
+OnChangeBounds
+TNotifyEvent
+OnClick
+TNotifyEvent
+OnResize
+TLCLComponent
+parent_class

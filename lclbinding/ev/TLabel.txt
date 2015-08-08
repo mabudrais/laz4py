@@ -1,0 +1,2 @@
+TCustomLabel
+parent_class

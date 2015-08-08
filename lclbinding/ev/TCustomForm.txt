@@ -1,0 +1,14 @@
+TNotifyEvent
+OnActivate
+TNotifyEvent
+OnCreate
+TNotifyEvent
+OnDeactivate
+TNotifyEvent
+OnDestroy
+TNotifyEvent
+OnHide
+TNotifyEvent
+OnShow
+TScrollingWinControl
+parent_class

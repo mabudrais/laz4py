@@ -1,0 +1,6 @@
+TNotifyEvent
+OnPopup
+TNotifyEvent
+OnClose
+TMenu
+parent_class

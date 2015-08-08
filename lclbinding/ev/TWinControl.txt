@@ -1,0 +1,6 @@
+TNotifyEvent
+OnEnter
+TNotifyEvent
+OnExit
+TControl
+parent_class

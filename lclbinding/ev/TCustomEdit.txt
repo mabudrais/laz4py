@@ -1,0 +1,4 @@
+TNotifyEvent
+OnChange
+TWinControl
+parent_class
