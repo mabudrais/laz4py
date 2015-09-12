@@ -9,9 +9,9 @@ uses
 
 function booltoint(b: boolean): integer;
 function inttobool(i:Integer):Boolean;
-
+procedure freeoldcalbac(p:Integer);
 implementation
-
+uses callbacunit;
 function booltoint(b: boolean): integer;
 begin
   if b then
@@ -26,6 +26,14 @@ begin
     Result := True
   else
     Result := False;
+end;
+
+procedure freeoldcalbac(p: Integer);
+begin
+  if p<>-1 then
+    begin
+     Tcallbac(Pointer(p)).Free;
+    end;
 end;
 
 end.

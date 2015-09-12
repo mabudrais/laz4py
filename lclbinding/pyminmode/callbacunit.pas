@@ -27,12 +27,12 @@ type
 
     pyfun: PyObject;
     procedure Scroll(Sender: TObject; ScrollCode: TScrollCode;
-      var ScrollPos: Integer);
-     procedure Popup(Sender: TObject);
-    procedure DrawItem(Control: TWinControl; Index: Integer; ARect: TRect;
+      var ScrollPos: integer);
+    procedure Popup(Sender: TObject);
+    procedure DrawItem(Control: TWinControl; Index: integer; ARect: TRect;
       State: TOwnerDrawState);
-    procedure MeasureItem(Control: TWinControl; Index: Integer;
-      var AHeight: Integer);
+    procedure MeasureItem(Control: TWinControl; Index: integer;
+      var AHeight: integer);
     procedure SelectionChange(Sender: TObject; User: boolean);
     procedure EndDock(Sender, Target: TObject; X, Y: integer);
     procedure GetSiteInfo(Sender: TObject; DockClient: TControl;
@@ -93,6 +93,7 @@ type
     procedure Change(Sender: TObject);
     procedure callobj_and_dec(const arg: PyObject);
     procedure click(obj: TObject);
+    procedure TNotifyEventcall(Sender: TObject);
     constructor Create;
   end;
 
@@ -109,13 +110,22 @@ var
 begin
   but := TButton(obj);
 
-  arg := Py_BuildValue('()');
+  arg := Py_BuildValue('(i)', integer(Pointer(obj)));
   pyresult := PyObject_CallObject(pyfun, arg);
   //strlis := TStringList.Create;
   //if(py)then
   //but.Caption := 'ooop';
   //strlis.SaveToFile('G:\dev\laz4py\laz4py3\o2.txt');
 
+  Py_DecRef(arg);
+end;
+
+procedure Tcallbac.TNotifyEventcall(Sender: TObject);
+var
+  arg: PyObject;
+begin
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
   Py_DecRef(arg);
 end;
 
@@ -128,18 +138,30 @@ begin
 end;
 
 procedure Tcallbac.EditingDone(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.DblClick(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.ChangeBounds(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -168,7 +190,6 @@ begin
   arg := Py_BuildValue('(iiiii)', integer(Pointer(Sender)), Pointer(
     Source), x, y, booltoint(Accept));
   callobj_and_dec(arg);
-
 end;
 
 procedure Tcallbac.EndDrag(Sender, Target: TObject; X, Y: integer);
@@ -177,13 +198,21 @@ begin
 end;
 
 procedure Tcallbac.Enter(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.Exit(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.KeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -208,13 +237,21 @@ begin
 end;
 
 procedure Tcallbac.MouseEnter(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.MouseLeave(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -247,8 +284,12 @@ begin
 end;
 
 procedure Tcallbac.Resize(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.StartDrag(Sender: TObject; var DragObject: TDragObject);
@@ -257,23 +298,39 @@ begin
 end;
 
 procedure Tcallbac.CloseUp(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.DropDown(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.GetItems(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.Select(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.UTF8KeyPress(Sender: TObject; var UTF8Key: TUTF8Char);
@@ -282,8 +339,12 @@ begin
 end;
 
 procedure Tcallbac.Activate(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.Close(Sender: TObject; var CloseAction: TCloseAction);
@@ -297,18 +358,30 @@ begin
 end;
 
 procedure Tcallbac.Deactivate(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.onCreate(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.onDestroy(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.DockDrop(Sender: TObject; Source: TDragDockObject; X, Y: integer);
@@ -326,23 +399,30 @@ procedure Tcallbac.DropFiles(Sender: TObject; const FileNames: array of string);
 begin
 
 end;
+
 procedure Tcallbac.Scroll(Sender: TObject; ScrollCode: TScrollCode;
-  var ScrollPos: Integer);
+  var ScrollPos: integer);
 begin
 
 end;
+
 procedure Tcallbac.Popup(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
-procedure Tcallbac.DrawItem(Control: TWinControl; Index: Integer;
+
+procedure Tcallbac.DrawItem(Control: TWinControl; Index: integer;
   ARect: TRect; State: TOwnerDrawState);
 begin
 
 end;
 
-procedure Tcallbac.MeasureItem(Control: TWinControl; Index: Integer;
-  var AHeight: Integer);
+procedure Tcallbac.MeasureItem(Control: TWinControl; Index: integer;
+  var AHeight: integer);
 begin
 
 end;
@@ -351,6 +431,7 @@ procedure Tcallbac.SelectionChange(Sender: TObject; User: boolean);
 begin
 
 end;
+
 procedure Tcallbac.EndDock(Sender, Target: TObject; X, Y: integer);
 begin
 
@@ -368,23 +449,34 @@ begin
 end;
 
 procedure Tcallbac.Hide(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.Paint(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.ShortCut(var Msg: TLMKey; var Handled: boolean);
 begin
-
 end;
 
 procedure Tcallbac.Show(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
 
 procedure Tcallbac.ShowHint(Sender: TObject; HintInfo: PHintInfo);
@@ -409,15 +501,16 @@ begin
 end;
 
 procedure Tcallbac.Change(Sender: TObject);
+var
+  arg: PyObject;
 begin
-
+  arg := Py_BuildValue('(i)', integer(Pointer(Sender)));
+  PyObject_CallObject(pyfun, arg);
+  Py_DecRef(arg);
 end;
-
-
 
 constructor Tcallbac.Create;
 begin
-
 end;
 
 end.

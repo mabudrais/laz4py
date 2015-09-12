@@ -15,7 +15,7 @@ type
   public
 
     constructor Create(obj: Tlaz4py);
-   class procedure reg(var k: integer; var Methods:packed array of PyMethodDef);
+   class procedure reg(var k: integer; var Methods: array of PyMethodDef);
   end;
 
 implementation

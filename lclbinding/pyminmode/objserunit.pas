@@ -110,12 +110,24 @@ begin
     ComponentClass := TGroupBox
   else if CompareText(AClassName, 'TCheckBox') = 0 then
     ComponentClass := TCheckBox
+  else if CompareText(AClassName, 'TRadioButton') = 0 then
+    ComponentClass := TRadioButton
   else if CompareText(AClassName, 'TForm') = 0 then
     ComponentClass := TForm
   else if CompareText(AClassName, 'TButton') = 0 then
     ComponentClass := TButton
   else if CompareText(AClassName, 'TEdit') = 0 then
-    ComponentClass := TEdit;
+    ComponentClass := TEdit
+  else if CompareText(AClassName, 'TLabel') = 0 then
+    ComponentClass := TLabel
+  else if CompareText(AClassName, 'TMemo') = 0 then
+    ComponentClass := TMemo
+  else if CompareText(AClassName, 'TMainMenu') = 0 then
+    ComponentClass := TMainMenu
+  else if CompareText(AClassName, 'TMenuItem') = 0 then
+    ComponentClass := TMenuItem
+  else if CompareText(AClassName, 'TPopupMenu') = 0 then
+    ComponentClass := TPopupMenu;
 end;
 
 function Tlfmreader.create_object(objname, objtype: string): boolean;

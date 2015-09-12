@@ -8,7 +8,7 @@ type
   TMemopy = class
  public
   cont: TMemo;
- procedure reg(var k: integer; var Methods: packed array of PyMethodDef);
+ procedure reg(var k: integer; var Methods:  array of PyMethodDef);
     constructor Create(p: TMemo);
 end;
 implementation

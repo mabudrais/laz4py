@@ -11,7 +11,7 @@ uses
 type
   Tpylabel = class(TButton)
     constructor Create(obj: Tlaz4py);
-    procedure reg(var k: integer; var Methods: packed array of PyMethodDef);
+    procedure reg(var k: integer; var Methods:  array of PyMethodDef);
   end;
 
 implementation
