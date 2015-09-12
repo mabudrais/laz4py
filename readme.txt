@@ -1,7 +1,8 @@
+(only tested on win32 python 2.7)
 this project is aiming to extend lazarus ide support for python .
 Current state:
-Support debugging python code.
-suport some lcl control (stctrls) for win32 python 2.7 
+run python code from lazarus you can also set break point and step through code.
+partial  (stctrls)  support.
 How to install:
 1- Copy the the the file pydbbr.pas to C:\lazarus\debugger\
 2- add pydbbr to uses in debugmanager.pas
