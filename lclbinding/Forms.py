@@ -1,4 +1,5 @@
 import PyMinMod
+from Controls import*
 #import end
 #class TScrollingWinControl start
 class TScrollingWinControl(TCustomControl):

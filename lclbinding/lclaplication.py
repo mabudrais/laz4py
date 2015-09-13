@@ -72,22 +72,23 @@ class Application:
 			#i=i+1
 		return form
 	@staticmethod
-	def CreateForm(formclass,filename):
+	def CreateForm3(formclass,filename):
 		form=formclass()
 		allatr=dir(form)
 		separated=''
-		for str in allatr:
-			separated=separated+'*'+str
+		for str2 in allatr:
+			separated=separated+'*'+str2
 		pointerstr=PyMinMod.Create_FormLfm(filename,separated)
 		pointerstrlist=pointerstr.split('*')
 		i=0
 		while i<len(allatr):
-			str=pointerstrlist[i+1]
-			p=int(str)
+			str2=pointerstrlist[i+1]
+			p=int(str2)
 			if p>-1:
 				getattr(form,allatr[i]).pointer=p
 			i=i+1
-		form.pointer=int(0)
+		form.pointer=int(pointerstrlist[0])
+		print form.__class__
 		return form
 	@staticmethod
 	def Run():

@@ -1,4 +1,5 @@
 import PyMinMod
+from LCLClasses import*
 #import end
 #class TMenu start
 class TMenu(TLCLComponent):
