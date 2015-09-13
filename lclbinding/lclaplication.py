@@ -10,8 +10,9 @@ class Application:
 			else:
 				i +=1
 		return -1
+	#this method contain bug
 	@staticmethod
-	def CreateForm(formclass,filename):
+	def CreateForm2(formclass,filename):
 		form=formclass()
 		allatr=dir(form)
 		separated=''
@@ -39,10 +40,10 @@ class Application:
 				eventslist.append(ev)
 				eventscalllist.append(evcall)
 				eventsobjlist.append(cobject)				
-		newlfmfile=open("temp.lfm",'w')
-		for str in newlines:
-			newlfmfile.write("%s" % str)
-		newlfmfile.close()
+		#newlfmfile=open("temp.lfm",'w')
+		#for str in newlines:
+		#	newlfmfile.write("%s" % str)
+		#newlfmfile.close()
 		pointerstr=PyMinMod.Create_FormLfm("temp.lfm",separated)
 		pointerstrlist=pointerstr.split('*')
 		i=0
@@ -69,6 +70,24 @@ class Application:
 			#setev=getattr(evobj,"set"+eventslist[i])
 			#setev(getattr(form,eventscalllist[i]))
 			#i=i+1
+		return form
+	@staticmethod
+	def CreateForm(formclass,filename):
+		form=formclass()
+		allatr=dir(form)
+		separated=''
+		for str in allatr:
+			separated=separated+'*'+str
+		pointerstr=PyMinMod.Create_FormLfm(filename,separated)
+		pointerstrlist=pointerstr.split('*')
+		i=0
+		while i<len(allatr):
+			str=pointerstrlist[i+1]
+			p=int(str)
+			if p>-1:
+				getattr(form,allatr[i]).pointer=p
+			i=i+1
+		form.pointer=int(0)
 		return form
 	@staticmethod
 	def Run():
