@@ -99,7 +99,7 @@ var
   var
     Reference: Pointer;
     hashnum, prehash: integer;
-    Arg1,Arg2: PChar;
+    Arg1,Arg2,rstr: PChar;
     rsredeader: Tlfmreader;
     f: TForm;
     pstr:String;
@@ -112,9 +112,10 @@ var
     f.Show;
     //Application.CreateForm(TForm, Reference);
     //hashnum := laz4pyobj.add_obj(Reference);
-    StrPCopy(arg1,pstr);
+    rstr:=StrAlloc(Length(pstr)+1);
+    StrPCopy(rstr,pstr);
     rsredeader.free;
-    Result :=PyString_FromString(Arg1);
+    Result :=PyString_FromString(rstr);
   end;
 
   function Application_Run(Self: PyObject; Args: PyObject): PyObject; cdecl;
